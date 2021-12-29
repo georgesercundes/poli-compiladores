@@ -17,121 +17,35 @@ public interface ObjListener extends ParseTreeListener {
 	 */
 	void exitStart(ObjParser.StartContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ObjNVazio}
-	 * labeled alternative in {@link ObjParser#dec}.
+	 * Enter a parse tree produced by {@link ObjParser#dec}.
 	 * @param ctx the parse tree
 	 */
-	void enterObjNVazio(ObjParser.ObjNVazioContext ctx);
+	void enterDec(ObjParser.DecContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ObjNVazio}
-	 * labeled alternative in {@link ObjParser#dec}.
+	 * Exit a parse tree produced by {@link ObjParser#dec}.
 	 * @param ctx the parse tree
 	 */
-	void exitObjNVazio(ObjParser.ObjNVazioContext ctx);
+	void exitDec(ObjParser.DecContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ObjVazio}
-	 * labeled alternative in {@link ObjParser#dec}.
-	 * @param ctx the parse tree
-	 */
-	void enterObjVazio(ObjParser.ObjVazioContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ObjVazio}
-	 * labeled alternative in {@link ObjParser#dec}.
-	 * @param ctx the parse tree
-	 */
-	void exitObjVazio(ObjParser.ObjVazioContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ObjParser#com}.
-	 * @param ctx the parse tree
-	 */
-	void enterCom(ObjParser.ComContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ObjParser#com}.
-	 * @param ctx the parse tree
-	 */
-	void exitCom(ObjParser.ComContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Atributo}
+	 * Enter a parse tree produced by the {@code InserirAtributo}
 	 * labeled alternative in {@link ObjParser#atrib}.
 	 * @param ctx the parse tree
 	 */
-	void enterAtributo(ObjParser.AtributoContext ctx);
+	void enterInserirAtributo(ObjParser.InserirAtributoContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Atributo}
+	 * Exit a parse tree produced by the {@code InserirAtributo}
 	 * labeled alternative in {@link ObjParser#atrib}.
 	 * @param ctx the parse tree
 	 */
-	void exitAtributo(ObjParser.AtributoContext ctx);
+	void exitInserirAtributo(ObjParser.InserirAtributoContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code FuncaoComArgumentos}
-	 * labeled alternative in {@link ObjParser#atrib}.
+	 * Enter a parse tree produced by {@link ObjParser#valor}.
 	 * @param ctx the parse tree
 	 */
-	void enterFuncaoComArgumentos(ObjParser.FuncaoComArgumentosContext ctx);
+	void enterValor(ObjParser.ValorContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code FuncaoComArgumentos}
-	 * labeled alternative in {@link ObjParser#atrib}.
+	 * Exit a parse tree produced by {@link ObjParser#valor}.
 	 * @param ctx the parse tree
 	 */
-	void exitFuncaoComArgumentos(ObjParser.FuncaoComArgumentosContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code FuncaoSemArgumentos}
-	 * labeled alternative in {@link ObjParser#atrib}.
-	 * @param ctx the parse tree
-	 */
-	void enterFuncaoSemArgumentos(ObjParser.FuncaoSemArgumentosContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code FuncaoSemArgumentos}
-	 * labeled alternative in {@link ObjParser#atrib}.
-	 * @param ctx the parse tree
-	 */
-	void exitFuncaoSemArgumentos(ObjParser.FuncaoSemArgumentosContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code False}
-	 * labeled alternative in {@link ObjParser#valor}.
-	 * @param ctx the parse tree
-	 */
-	void enterFalse(ObjParser.FalseContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code False}
-	 * labeled alternative in {@link ObjParser#valor}.
-	 * @param ctx the parse tree
-	 */
-	void exitFalse(ObjParser.FalseContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code True}
-	 * labeled alternative in {@link ObjParser#valor}.
-	 * @param ctx the parse tree
-	 */
-	void enterTrue(ObjParser.TrueContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code True}
-	 * labeled alternative in {@link ObjParser#valor}.
-	 * @param ctx the parse tree
-	 */
-	void exitTrue(ObjParser.TrueContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Num}
-	 * labeled alternative in {@link ObjParser#valor}.
-	 * @param ctx the parse tree
-	 */
-	void enterNum(ObjParser.NumContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Num}
-	 * labeled alternative in {@link ObjParser#valor}.
-	 * @param ctx the parse tree
-	 */
-	void exitNum(ObjParser.NumContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code String}
-	 * labeled alternative in {@link ObjParser#valor}.
-	 * @param ctx the parse tree
-	 */
-	void enterString(ObjParser.StringContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code String}
-	 * labeled alternative in {@link ObjParser#valor}.
-	 * @param ctx the parse tree
-	 */
-	void exitString(ObjParser.StringContext ctx);
+	void exitValor(ObjParser.ValorContext ctx);
 }

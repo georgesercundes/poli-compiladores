@@ -1,0 +1,17 @@
+obj pessoa1 = {
+    nome: "George",
+    idade: 33,
+    profissao: "Desenvolvedor",
+    doador: true,
+    sexo: "M",
+    deficiente: false
+}
+
+obj pessoa2 = {
+    nome: "Gabriela",
+    idade: 32,
+    profissao: "Advogada",
+    doador: true,
+    sexo: "F",
+    deficiente: false
+}

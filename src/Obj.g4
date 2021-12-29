@@ -2,27 +2,33 @@ grammar Obj;
 
 //Sintaxe
 
-start: dec* EOF;
+start: dec* com* EOF;
 
 dec : 'obj' VAR '=' '{' atrib (',' atrib)* '}' ;
 
-atrib : VAR ':' valor  #Atributo
-      | VAR '('  VAR (',' VAR )* ')' '{' 'return' valor '}' #FuncaoComArgumentos
-      | VAR '('  ')' '{' 'return' valor '}'#FuncaoSemArgumentos
+com : VAR '.' VAR '=' valor #ModificarCriarAtributo
+    | 'print' '(' VAR ')' #PrintObj
+    | 'print' '(' VAR '.' VAR ')'#PrintAtrib
+    ;
+
+atrib : VAR ':' valor  #InserirAtributo
+//      | VAR '('  VAR (',' VAR )* ')' '{' 'return' valor '}' #FuncaoComArgumentos
+//      | VAR '('  ')' '{' 'return' valor '}'#FuncaoSemArgumentos
       ;
 
-valor : FALSE #False
-      | TRUE #True
-      | NUM #Num
-      | STRING #String
+valor : FALSE
+      | TRUE
+      | NUM
+      | STRING
       ;
 
 // Léxica
 
 TRUE : 'true';
 FALSE : 'false';
-VAR : [a-zA-Z]+ ;
 NUM : '-'?[0-9]+ ;
 STRING : '"' (~["] | '\\"')* '"' ;
+VAR : [a-zA-Z0-9]+ ;
+
 
 SPACES : (' '  | '\n' | '\t' | '\r') -> skip;
