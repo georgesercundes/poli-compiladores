@@ -4,10 +4,11 @@ grammar Obj;
 
 start: dec* EOF;
 
-dec : 'obj' VAR '=' '{' atrib* '}' #CriaObj ;
+dec : 'obj' VAR '=' '{' atrib (',' atrib)* '}' ;
 
-atrib : (',')? VAR ':' valor  #Atributo
-      | (',')? VAR '(' ((',')? VAR )* ')' '{' 'return' valor '}' #Funcao
+atrib : VAR ':' valor  #Atributo
+      | VAR '('  VAR (',' VAR )* ')' '{' 'return' valor '}' #FuncaoComArgumentos
+      | VAR '('  ')' '{' 'return' valor '}'#FuncaoSemArgumentos
       ;
 
 valor : FALSE #False
@@ -15,7 +16,6 @@ valor : FALSE #False
       | NUM #Num
       | STRING #String
       ;
-
 
 // Léxica
 
