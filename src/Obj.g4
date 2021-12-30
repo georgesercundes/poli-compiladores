@@ -4,14 +4,14 @@ grammar Obj;
 
 start: dec* com* EOF;
 
-dec : 'obj' VAR '=' '{' atrib (',' atrib)* '}' ;
+dec : 'obj' VAR '=' '{' (atrib (',' atrib)*)* '}' ;
 
-com : VAR '.' VAR '=' valor #ModificarCriarAtributo
+com : VAR '.' VAR '=' valor #ModificarInserirAtributo
     | 'print' '(' VAR ')' #PrintObj
     | 'print' '(' VAR '.' VAR ')'#PrintAtrib
     ;
 
-atrib : VAR ':' valor  #InserirAtributo
+atrib : VAR ':' valor  #CriarAtributo
 //      | VAR '('  VAR (',' VAR )* ')' '{' 'return' valor '}' #FuncaoComArgumentos
 //      | VAR '('  ')' '{' 'return' valor '}'#FuncaoSemArgumentos
       ;
@@ -29,6 +29,5 @@ FALSE : 'false';
 NUM : '-'?[0-9]+ ;
 STRING : '"' (~["] | '\\"')* '"' ;
 VAR : [a-zA-Z0-9]+ ;
-
 
 SPACES : (' '  | '\n' | '\t' | '\r') -> skip;

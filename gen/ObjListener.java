@@ -27,17 +27,53 @@ public interface ObjListener extends ParseTreeListener {
 	 */
 	void exitDec(ObjParser.DecContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code InserirAtributo}
-	 * labeled alternative in {@link ObjParser#atrib}.
+	 * Enter a parse tree produced by the {@code ModificarInserirAtributo}
+	 * labeled alternative in {@link ObjParser#com}.
 	 * @param ctx the parse tree
 	 */
-	void enterInserirAtributo(ObjParser.InserirAtributoContext ctx);
+	void enterModificarInserirAtributo(ObjParser.ModificarInserirAtributoContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code InserirAtributo}
+	 * Exit a parse tree produced by the {@code ModificarInserirAtributo}
+	 * labeled alternative in {@link ObjParser#com}.
+	 * @param ctx the parse tree
+	 */
+	void exitModificarInserirAtributo(ObjParser.ModificarInserirAtributoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code PrintObj}
+	 * labeled alternative in {@link ObjParser#com}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrintObj(ObjParser.PrintObjContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code PrintObj}
+	 * labeled alternative in {@link ObjParser#com}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrintObj(ObjParser.PrintObjContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code PrintAtrib}
+	 * labeled alternative in {@link ObjParser#com}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrintAtrib(ObjParser.PrintAtribContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code PrintAtrib}
+	 * labeled alternative in {@link ObjParser#com}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrintAtrib(ObjParser.PrintAtribContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code CriarAtributo}
 	 * labeled alternative in {@link ObjParser#atrib}.
 	 * @param ctx the parse tree
 	 */
-	void exitInserirAtributo(ObjParser.InserirAtributoContext ctx);
+	void enterCriarAtributo(ObjParser.CriarAtributoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code CriarAtributo}
+	 * labeled alternative in {@link ObjParser#atrib}.
+	 * @param ctx the parse tree
+	 */
+	void exitCriarAtributo(ObjParser.CriarAtributoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ObjParser#valor}.
 	 * @param ctx the parse tree

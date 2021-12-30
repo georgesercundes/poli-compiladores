@@ -39,13 +39,49 @@ public class ObjBaseListener implements ObjListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInserirAtributo(ObjParser.InserirAtributoContext ctx) { }
+	@Override public void enterModificarInserirAtributo(ObjParser.ModificarInserirAtributoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInserirAtributo(ObjParser.InserirAtributoContext ctx) { }
+	@Override public void exitModificarInserirAtributo(ObjParser.ModificarInserirAtributoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPrintObj(ObjParser.PrintObjContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPrintObj(ObjParser.PrintObjContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPrintAtrib(ObjParser.PrintAtribContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPrintAtrib(ObjParser.PrintAtribContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCriarAtributo(ObjParser.CriarAtributoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCriarAtributo(ObjParser.CriarAtributoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -15,3 +15,13 @@ obj pessoa2 = {
     sexo: "F",
     deficiente: false
 }
+
+obj pessoa3 = { }
+
+print(pessoa3)
+pessoa3.nome = "Luiz"
+pessoa2.profissao = "Desenvolvedora"
+pessoa1.salario = 3000
+print(pessoa1)
+print(pessoa2)
+print(pessoa3)
