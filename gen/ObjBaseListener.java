@@ -1,4 +1,4 @@
-// Generated from C:/Users/george.siqueira/IdeaProjects/Projeto_Compiladores/src\Obj.g4 by ANTLR 4.9.2
+// Generated from C:/Users/georg/IdeaProjects/Projeto_Compiladores/src\Obj.g4 by ANTLR 4.9.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -27,13 +27,25 @@ public class ObjBaseListener implements ObjListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDec(ObjParser.DecContext ctx) { }
+	@Override public void enterDecObj(ObjParser.DecObjContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDec(ObjParser.DecContext ctx) { }
+	@Override public void exitDecObj(ObjParser.DecObjContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDecVar(ObjParser.DecVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecVar(ObjParser.DecVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -51,13 +63,25 @@ public class ObjBaseListener implements ObjListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrintObj(ObjParser.PrintObjContext ctx) { }
+	@Override public void enterAtribuicao(ObjParser.AtribuicaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrintObj(ObjParser.PrintObjContext ctx) { }
+	@Override public void exitAtribuicao(ObjParser.AtribuicaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPrint(ObjParser.PrintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPrint(ObjParser.PrintContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -82,6 +106,54 @@ public class ObjBaseListener implements ObjListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCriarAtributo(ObjParser.CriarAtributoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVariavel(ObjParser.VariavelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVariavel(ObjParser.VariavelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOp(ObjParser.OpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOp(ObjParser.OpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConstante(ObjParser.ConstanteContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConstante(ObjParser.ConstanteContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGrupo(ObjParser.GrupoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGrupo(ObjParser.GrupoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

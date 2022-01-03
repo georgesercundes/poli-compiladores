@@ -25,3 +25,28 @@ pessoa1.salario = 3000
 print(pessoa1)
 print(pessoa2)
 print(pessoa3)
+
+var a = 5 + 1 + 2
+var b = 2 + 2
+var c = a + b
+var z = false
+var w = true
+var y = "teste"
+var j = "teste" + " outra string"
+var k = false || true
+var u = false && true
+var p = (2 == 2)
+a = 9
+y = "teste2"
+z = 5
+j = true
+print(a)
+print(b)
+print(c)
+print(z)
+print(w)
+print(y)
+print(j)
+print(k)
+print(u)
+print(p)
