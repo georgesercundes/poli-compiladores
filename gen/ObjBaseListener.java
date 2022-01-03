@@ -87,18 +87,6 @@ public class ObjBaseListener implements ObjListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrintAtrib(ObjParser.PrintAtribContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitPrintAtrib(ObjParser.PrintAtribContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterCriarAtributo(ObjParser.CriarAtributoContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -106,6 +94,42 @@ public class ObjBaseListener implements ObjListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCriarAtributo(ObjParser.CriarAtributoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCriarFuncao(ObjParser.CriarFuncaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCriarFuncao(ObjParser.CriarFuncaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBloco(ObjParser.BlocoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBloco(ObjParser.BlocoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSeq(ObjParser.SeqContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSeq(ObjParser.SeqContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -130,6 +154,30 @@ public class ObjBaseListener implements ObjListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitOp(ObjParser.OpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAtributo(ObjParser.AtributoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAtributo(ObjParser.AtributoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFuncao(ObjParser.FuncaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFuncao(ObjParser.FuncaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

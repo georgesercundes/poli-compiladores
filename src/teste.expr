@@ -4,7 +4,11 @@ obj pessoa1 = {
     profissao: "Desenvolvedor",
     doador: true,
     sexo: "M",
-    deficiente: false
+    deficiente: false,
+    calcularBonus (salario, porcentagem) {
+        var cem = 100
+        return salario - ((salario * (100 - porcentagem))/100)
+    }
 }
 
 obj pessoa2 = {
@@ -17,36 +21,13 @@ obj pessoa2 = {
 }
 
 obj pessoa3 = { }
-
 print(pessoa3)
 pessoa3.nome = "Luiz"
 pessoa2.profissao = "Desenvolvedora"
 pessoa1.salario = 3000
 print(pessoa1)
 print(pessoa2)
-print(pessoa3)
-
-var a = 5 + 1 + 2
-var b = 2 + 2
-var c = a + b
-var z = false
-var w = true
-var y = "teste"
-var j = "teste" + " outra string"
-var k = false || true
-var u = false && true
-var p = (2 == 2)
-a = 9
-y = "teste2"
-z = 5
-j = true
+print(pessoa3.nome)
+print(pessoa1.calcularBonus(3000, 10))
+var a = 4000 * (500/5)
 print(a)
-print(b)
-print(c)
-print(z)
-print(w)
-print(y)
-print(j)
-print(k)
-print(u)
-print(p)

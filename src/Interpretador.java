@@ -4,7 +4,8 @@ import java.util.*;
 public class Interpretador {
     private final Map<String, HashMap<String, Object>> objetos = new HashMap<>();
     private HashMap<String, Object> atributosObjs = new HashMap<>();
-    private HashMap<String, Object> variaveis = new HashMap<>();
+    private final HashMap<String, ParseTree> codigoFuncao = new HashMap<>();
+    private final HashMap<String, Object> variaveis = new HashMap<>();
 
     public Object interpretar (ParseTree t){
         String tipo = t.getClass().getSimpleName().replace("Context", "");
@@ -71,23 +72,35 @@ public class Interpretador {
                 return null;
             }
 
-            case "PrintAtrib": {
-                String nomeObj = t.getChild(2).getText();
-                String atributo = t.getChild(4).getText();
-                if(!objetos.containsKey(nomeObj)){
-                    throw new RuntimeException("Objeto " + nomeObj + " Não declarado");
-                } else if (!objetos.get(nomeObj).containsKey(atributo)){
-                    throw new RuntimeException("Atributo " + atributo + " Não existe");
-                } else {
-                    System.out.println(objetos.get(nomeObj).get(atributo).toString());
-                }
-                return null;
-            }
-
             case "CriarAtributo": {
                 String atributo = t.getChild(0).getText();
                 Object valor = interpretar(t.getChild(2));
                 atributosObjs.put(atributo, valor);
+                return null;
+            }
+
+            case "CriarFuncao": {
+                String nomeFunc = t.getChild(0).getText();
+                ArrayList<String> argumentos = new ArrayList<>();
+                int c = 2;
+                while (c < t.getChildCount() - 4) {
+                    argumentos.add(t.getChild(c).getText());
+                    c += 2;
+                }
+                c++;
+                atributosObjs.put(nomeFunc, argumentos);
+                codigoFuncao.put(nomeFunc, t.getChild(c));
+                return null;
+            }
+
+            case "Bloco": {
+                return null;
+            }
+
+            case "Seq": {
+                for (int c = 0; c < t.getChildCount(); c++) {
+                    interpretar(t.getChild(c));
+                }
                 return null;
             }
 
@@ -119,6 +132,43 @@ public class Interpretador {
 
             case "Grupo": {
                 return interpretar(t.getChild(1));
+            }
+
+            case "Atributo": {
+                String nomeObj = t.getChild(0).getText();
+                String atributo = t.getChild(2).getText();
+                if(!objetos.containsKey(nomeObj)){
+                    throw new RuntimeException("Objeto " + nomeObj + " Não declarado");
+                } else if (!objetos.get(nomeObj).containsKey(atributo)){
+                    throw new RuntimeException("Atributo " + atributo + " Não existe");
+                } else {
+                    return objetos.get(nomeObj).get(atributo);
+                }
+            }
+
+            case "Funcao": {
+                String nomeObj = t.getChild(0).getText();
+                String nomeFunc = t.getChild(2).getText();
+                if(!objetos.containsKey(nomeObj)){
+                    throw new RuntimeException("Objeto " + nomeObj + " não declarada");
+                } else if (!objetos.get(nomeObj).containsKey(nomeFunc)) {
+                    throw new RuntimeException("Função " + nomeFunc + " não existe");
+                } else {
+                    ArrayList<String> argumentos = (ArrayList<String>) objetos.get(nomeObj).get(nomeFunc);
+                    int numArgs = argumentos.size();
+                    if(!numIgualDeArgs(numArgs, t)){
+                        throw new RuntimeException("Número de argumentos passados diferentes da função declarada");
+                    }
+                    int index = 0;
+                    for(int c = 4; c < t.getChildCount() - 1; c+=2){
+                        String var = argumentos.get(index);
+                        variaveis.put(var, interpretar(t.getChild(c)));
+                        index++;
+                    }
+                    ParseTree bloco = codigoFuncao.get(nomeFunc);
+                    interpretar(bloco.getChild(0));
+                    return interpretar(bloco.getChild(2));
+                }
             }
 
             case "Valor": {
@@ -176,5 +226,12 @@ public class Interpretador {
         }
     }
 
+    private boolean numIgualDeArgs(int numArgs, ParseTree t){
+        int numArgsPassados = 0;
+        for(int c = 4; c < t.getChildCount() - 1; c+=2){
+            numArgsPassados++;
+        }
+        return numArgs == numArgsPassados;
+    }
 
 }

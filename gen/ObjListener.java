@@ -77,18 +77,6 @@ public interface ObjListener extends ParseTreeListener {
 	 */
 	void exitPrint(ObjParser.PrintContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code PrintAtrib}
-	 * labeled alternative in {@link ObjParser#com}.
-	 * @param ctx the parse tree
-	 */
-	void enterPrintAtrib(ObjParser.PrintAtribContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code PrintAtrib}
-	 * labeled alternative in {@link ObjParser#com}.
-	 * @param ctx the parse tree
-	 */
-	void exitPrintAtrib(ObjParser.PrintAtribContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code CriarAtributo}
 	 * labeled alternative in {@link ObjParser#atrib}.
 	 * @param ctx the parse tree
@@ -100,6 +88,38 @@ public interface ObjListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCriarAtributo(ObjParser.CriarAtributoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code CriarFuncao}
+	 * labeled alternative in {@link ObjParser#atrib}.
+	 * @param ctx the parse tree
+	 */
+	void enterCriarFuncao(ObjParser.CriarFuncaoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code CriarFuncao}
+	 * labeled alternative in {@link ObjParser#atrib}.
+	 * @param ctx the parse tree
+	 */
+	void exitCriarFuncao(ObjParser.CriarFuncaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ObjParser#bloco}.
+	 * @param ctx the parse tree
+	 */
+	void enterBloco(ObjParser.BlocoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ObjParser#bloco}.
+	 * @param ctx the parse tree
+	 */
+	void exitBloco(ObjParser.BlocoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ObjParser#seq}.
+	 * @param ctx the parse tree
+	 */
+	void enterSeq(ObjParser.SeqContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ObjParser#seq}.
+	 * @param ctx the parse tree
+	 */
+	void exitSeq(ObjParser.SeqContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Variavel}
 	 * labeled alternative in {@link ObjParser#expr}.
@@ -124,6 +144,30 @@ public interface ObjListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitOp(ObjParser.OpContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Atributo}
+	 * labeled alternative in {@link ObjParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAtributo(ObjParser.AtributoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Atributo}
+	 * labeled alternative in {@link ObjParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAtributo(ObjParser.AtributoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Funcao}
+	 * labeled alternative in {@link ObjParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterFuncao(ObjParser.FuncaoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Funcao}
+	 * labeled alternative in {@link ObjParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitFuncao(ObjParser.FuncaoContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Constante}
 	 * labeled alternative in {@link ObjParser#expr}.

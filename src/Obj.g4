@@ -2,7 +2,7 @@ grammar Obj;
 
 //Sintaxe
 
-start: (dec com*)* EOF;
+start: (dec com*)* (com dec*)*  EOF;
 
 dec : 'obj' VAR '=' '{' (atrib (',' atrib)*)? '}' #DecObj
     | 'var' VAR '=' expr #DecVar
@@ -11,18 +11,23 @@ dec : 'obj' VAR '=' '{' (atrib (',' atrib)*)? '}' #DecObj
 com : VAR '.' VAR '=' valor #ModificarInserirAtributo
     | VAR '=' expr #Atribuicao
     | 'print' '(' expr ')' #Print
-    | 'print' '(' VAR '.' VAR ')' #PrintAtrib
     ;
 
 atrib : VAR ':' valor  #CriarAtributo
-//      | VAR '(' (VAR (',' VAR )*)? ')' '{' dec* com* 'return' expr '}' #CriarFuncao
+      | VAR '(' (VAR (',' VAR )*)? ')' '{' bloco '}' #CriarFuncao
       ;
 
-expr: valor #Constante
-    | VAR #Variavel
-    | expr OP expr #Op
-    | '(' expr ')' #Grupo
-    ;
+bloco : seq 'return' expr ;
+
+seq : (dec com*)* (com dec*)* ;
+
+expr : valor #Constante
+     | VAR #Variavel
+     | expr OP expr #Op
+     | '(' expr ')' #Grupo
+     | VAR '.' VAR  #Atributo
+     | VAR '.' VAR '(' (expr (',' expr )*)? ')' #Funcao
+     ;
 
 valor : FALSE
       | TRUE
