@@ -2,32 +2,39 @@ grammar Obj;
 
 //Sintaxe
 
-start: (dec com*)* (com dec*)*  EOF;
+start: (obj | print)* EOF;
 
-dec : 'obj' VAR '=' '{' (atrib (',' atrib)*)? '}' #DecObj
-    | 'var' VAR '=' expr #DecVar
+obj : 'obj' VAR '=' '{' (atrib (',' atrib)*)? '}' #DecObj
+    | VAR '.' VAR '=' valor #ModificaCriaAtributo
+    | funcao #ChamarFuncao
     ;
 
-com : VAR '.' VAR '=' valor #ModificarInserirAtributo
-    | VAR '=' expr #Atribuicao
-    | 'print' '(' expr ')' #Print
+decVar : 'var' VAR '=' expr ;
+
+print : 'print' '(' expr ')' ;
+
+com : VAR '=' expr #Atribuicao
+    | 'while' '(' expr ')' '{' seq '}' #While
+    | 'if' '(' expr ')' '{' seq '}' ('else' '{' seq '}')? #If
     ;
 
 atrib : VAR ':' valor  #CriarAtributo
       | VAR '(' (VAR (',' VAR )*)? ')' '{' bloco '}' #CriarFuncao
       ;
 
-bloco : seq 'return' expr ;
+bloco : seq ('return' expr)? ;
 
-seq : (dec com*)* (com dec*)* ;
+seq : (decVar | com | print)*;
 
 expr : valor #Constante
      | VAR #Variavel
      | expr OP expr #Op
      | '(' expr ')' #Grupo
      | VAR '.' VAR  #Atributo
-     | VAR '.' VAR '(' (expr (',' expr )*)? ')' #Funcao
+     | funcao #ValorFuncao
      ;
+
+funcao: VAR '.' VAR '(' (expr (',' expr )*)? ')';
 
 valor : FALSE
       | TRUE

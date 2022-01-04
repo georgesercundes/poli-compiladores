@@ -6,7 +6,6 @@ obj pessoa1 = {
     sexo: "M",
     deficiente: false,
     calcularBonus (salario, porcentagem) {
-        var cem = 100
         return salario - ((salario * (100 - porcentagem))/100)
     }
 }
@@ -17,7 +16,13 @@ obj pessoa2 = {
     profissao: "Advogada",
     doador: true,
     sexo: "F",
-    deficiente: false
+    deficiente: false,
+    executarLoop(inicio, limite){
+        while(inicio > limite){
+            print(inicio)
+            inicio = inicio + 1
+        }
+    }
 }
 
 obj pessoa3 = { }
@@ -29,5 +34,4 @@ print(pessoa1)
 print(pessoa2)
 print(pessoa3.nome)
 print(pessoa1.calcularBonus(3000, 10))
-var a = 4000 * (500/5)
-print(a)
+pessoa2.executarLoop(0, 10)

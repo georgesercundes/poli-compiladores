@@ -4,7 +4,6 @@ import java.util.*;
 public class Interpretador {
     private final Map<String, HashMap<String, Object>> objetos = new HashMap<>();
     private HashMap<String, Object> atributosObjs = new HashMap<>();
-    private final HashMap<String, ParseTree> codigoFuncao = new HashMap<>();
     private final HashMap<String, Object> variaveis = new HashMap<>();
 
     public Object interpretar (ParseTree t){
@@ -27,14 +26,7 @@ public class Interpretador {
                 return null;
             }
 
-            case "DecVar": {
-                String nomeVar = t.getChild(1).getText();
-                Object var = interpretar(t.getChild(3));
-                variaveis.put(nomeVar, var);
-                return null;
-            }
-
-            case "ModificarInserirAtributo": {
+            case "ModificaCriaAtributo": {
                 String nomeObj = t.getChild(0).getText();
                 if (objetos.containsKey(nomeObj)){
                     String atributo = t.getChild(2).getText();
@@ -43,6 +35,27 @@ public class Interpretador {
 
                 } else {
                     throw new RuntimeException("Objeto " + nomeObj + " Não declarado");
+                }
+                return null;
+            }
+
+            case "DecVar": {
+                String nomeVar = t.getChild(1).getText();
+                Object var = interpretar(t.getChild(3));
+                variaveis.put(nomeVar, var);
+                return null;
+            }
+
+            case "Print": {
+                String nomeVar = t.getChild(2).getText();
+                if(objetos.containsKey(nomeVar)){
+                    System.out.print("{");
+                    objetos.get(nomeVar).entrySet().forEach(entry -> {
+                        System.out.print(" " + entry.getKey() + ":" + " " + entry.getValue() + ",");
+                    });
+                    System.out.println(" }");
+                } else {
+                    System.out.println(interpretar(t.getChild(2)).toString());
                 }
                 return null;
             }
@@ -58,16 +71,33 @@ public class Interpretador {
                 return null;
             }
 
-            case "Print": {
-                String nomeVar = t.getChild(2).getText();
-                if(objetos.containsKey(nomeVar)){
-                    System.out.print("{");
-                    objetos.get(nomeVar).entrySet().forEach(entry -> {
-                        System.out.print(" " + entry.getKey() + ":" + " " + entry.getValue() + ",");
-                    });
-                    System.out.println(" }");
+            case "While": {
+                ParseTree condicao = t.getChild(2);
+                ParseTree repeticao = t.getChild(5);
+                if(!interpretar(condicao).getClass().getSimpleName().equals("Boolean")){
+                    throw new RuntimeException("Condição não é uma expressão booleana");
                 } else {
-                    System.out.println(interpretar(t.getChild(2)).toString());
+                    while ((Boolean) interpretar(condicao)){
+                        interpretar(repeticao);
+                    }
+                }
+                return null;
+            }
+
+            case "If": {
+                ParseTree condicao = t.getChild(2);
+                ParseTree BlocoIf = t.getChild(5);
+                ParseTree BlocoElse = t.getChild(9);
+                if(!interpretar(condicao).getClass().getSimpleName().equals("Boolean")) {
+                    throw new RuntimeException("Condição não é uma expressão booleana");
+                } else {
+                    if((Boolean) interpretar(condicao)){
+                        interpretar(BlocoIf);
+                    } else {
+                        if(BlocoElse != null){
+                            interpretar(BlocoElse);
+                        }
+                    }
                 }
                 return null;
             }
@@ -89,12 +119,16 @@ public class Interpretador {
                 }
                 c++;
                 atributosObjs.put(nomeFunc, argumentos);
-                codigoFuncao.put(nomeFunc, t.getChild(c));
+                variaveis.put(nomeFunc, t.getChild(c));
                 return null;
             }
 
             case "Bloco": {
-                return null;
+                interpretar(t.getChild(0));
+                ParseTree retorno = t.getChild(2);
+                if (retorno != null) {
+                    return interpretar(t.getChild(2));
+                }
             }
 
             case "Seq": {
@@ -103,7 +137,8 @@ public class Interpretador {
                 }
                 return null;
             }
-
+            case "ValorFuncao":
+            case "ChamarFuncao":
             case "Constante": {
                 return interpretar(t.getChild(0));
             }
@@ -165,9 +200,8 @@ public class Interpretador {
                         variaveis.put(var, interpretar(t.getChild(c)));
                         index++;
                     }
-                    ParseTree bloco = codigoFuncao.get(nomeFunc);
-                    interpretar(bloco.getChild(0));
-                    return interpretar(bloco.getChild(2));
+                    ParseTree bloco = (ParseTree) variaveis.get(nomeFunc);
+                    return interpretar(bloco);
                 }
             }
 
