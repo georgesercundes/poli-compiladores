@@ -51,6 +51,18 @@ public class ObjBaseListener implements ObjListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterModificaCriaFuncao(ObjParser.ModificaCriaFuncaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitModificaCriaFuncao(ObjParser.ModificaCriaFuncaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterChamarFuncao(ObjParser.ChamarFuncaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -87,13 +99,13 @@ public class ObjBaseListener implements ObjListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAtribuicao(ObjParser.AtribuicaoContext ctx) { }
+	@Override public void enterAtribVariavel(ObjParser.AtribVariavelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAtribuicao(ObjParser.AtribuicaoContext ctx) { }
+	@Override public void exitAtribVariavel(ObjParser.AtribVariavelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

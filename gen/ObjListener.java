@@ -41,6 +41,18 @@ public interface ObjListener extends ParseTreeListener {
 	 */
 	void exitModificaCriaAtributo(ObjParser.ModificaCriaAtributoContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code ModificaCriaFuncao}
+	 * labeled alternative in {@link ObjParser#obj}.
+	 * @param ctx the parse tree
+	 */
+	void enterModificaCriaFuncao(ObjParser.ModificaCriaFuncaoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ModificaCriaFuncao}
+	 * labeled alternative in {@link ObjParser#obj}.
+	 * @param ctx the parse tree
+	 */
+	void exitModificaCriaFuncao(ObjParser.ModificaCriaFuncaoContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code ChamarFuncao}
 	 * labeled alternative in {@link ObjParser#obj}.
 	 * @param ctx the parse tree
@@ -73,17 +85,17 @@ public interface ObjListener extends ParseTreeListener {
 	 */
 	void exitPrint(ObjParser.PrintContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Atribuicao}
+	 * Enter a parse tree produced by the {@code AtribVariavel}
 	 * labeled alternative in {@link ObjParser#com}.
 	 * @param ctx the parse tree
 	 */
-	void enterAtribuicao(ObjParser.AtribuicaoContext ctx);
+	void enterAtribVariavel(ObjParser.AtribVariavelContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Atribuicao}
+	 * Exit a parse tree produced by the {@code AtribVariavel}
 	 * labeled alternative in {@link ObjParser#com}.
 	 * @param ctx the parse tree
 	 */
-	void exitAtribuicao(ObjParser.AtribuicaoContext ctx);
+	void exitAtribVariavel(ObjParser.AtribVariavelContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code While}
 	 * labeled alternative in {@link ObjParser#com}.

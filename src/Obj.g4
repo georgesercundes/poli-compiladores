@@ -6,6 +6,7 @@ start: (obj | print)* EOF;
 
 obj : 'obj' VAR '=' '{' (atrib (',' atrib)*)? '}' #DecObj
     | VAR '.' VAR '=' valor #ModificaCriaAtributo
+    | VAR '.' VAR '=' 'function' '(' (VAR (',' VAR )*)? ')' '{' bloco '}' #ModificaCriaFuncao
     | funcao #ChamarFuncao
     ;
 
@@ -13,7 +14,7 @@ decVar : 'var' VAR '=' expr ;
 
 print : 'print' '(' expr ')' ;
 
-com : VAR '=' expr #Atribuicao
+com : VAR '=' expr #AtribVariavel
     | 'while' '(' expr ')' '{' seq '}' #While
     | 'if' '(' expr ')' '{' seq '}' ('else' '{' seq '}')? #If
     ;
@@ -40,6 +41,7 @@ valor : FALSE
       | TRUE
       | NUM
       | STRING
+      | DOUBLE
       ;
 
 // Léxica
@@ -47,6 +49,7 @@ valor : FALSE
 TRUE : 'true';
 FALSE : 'false';
 NUM : '-'?[0-9]+ ;
+DOUBLE : '-'?[0-9]+ '.' [0-9]+ ;
 STRING : '"' (~["] | '\\"')* '"' ;
 VAR : [a-zA-Z0-9]+ ;
 OP : '+' | '-' | '*' | '/' | '==' | '!=' | '>' | '>=' | '<' | '<=' | '||' | '&&' ;

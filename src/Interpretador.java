@@ -39,6 +39,25 @@ public class Interpretador {
                 return null;
             }
 
+            case "ModificaCriaFuncao": {
+                String nomeObj = t.getChild(0).getText();
+                if (objetos.containsKey(nomeObj)) {
+                    String nomeFunc = t.getChild(2).getText();
+                    ArrayList<String> argumentos = new ArrayList<>();
+                    int c = 6;
+                    while (c < t.getChildCount() - 4) {
+                        argumentos.add(t.getChild(c).getText());
+                        c += 2;
+                    }
+                    c = t.getChildCount() - 2;
+                    objetos.get(nomeObj).put(nomeFunc, argumentos);
+                    variaveis.put(nomeFunc, t.getChild(c));
+                } else {
+                    throw new RuntimeException("Objeto " + nomeObj + " Não declarado");
+                }
+                return null;
+            }
+
             case "DecVar": {
                 String nomeVar = t.getChild(1).getText();
                 Object var = interpretar(t.getChild(3));
@@ -60,7 +79,7 @@ public class Interpretador {
                 return null;
             }
 
-            case "Atribuicao": {
+            case "AtribVariavel": {
                 String nomeVar = t.getChild(0).getText();
                 if(!variaveis.containsKey(nomeVar)){
                 throw new RuntimeException("Variável" + nomeVar + " não declarada");
@@ -117,7 +136,7 @@ public class Interpretador {
                     argumentos.add(t.getChild(c).getText());
                     c += 2;
                 }
-                c++;
+                c = t.getChildCount() - 2;
                 atributosObjs.put(nomeFunc, argumentos);
                 variaveis.put(nomeFunc, t.getChild(c));
                 return null;
@@ -129,6 +148,7 @@ public class Interpretador {
                 if (retorno != null) {
                     return interpretar(t.getChild(2));
                 }
+                return null;
             }
 
             case "Seq": {
@@ -158,7 +178,11 @@ public class Interpretador {
                 Object opDir = interpretar(t.getChild(2));
                 String tipoOpEsq = opEsq.getClass().getSimpleName();
                 String tipoOpDir = opDir.getClass().getSimpleName();
-                if(!tipoOpDir.equals(tipoOpEsq)){
+                if(tipoOpDir.equals("Integer") && tipoOpEsq.equals("Double")) {
+                    return operacoes(opDir, opEsq, operador, tipoOpEsq);
+                } else if (tipoOpEsq.equals("Integer") && tipoOpDir.equals("Double")) {
+                    return operacoes(opDir, opEsq, operador, tipoOpDir);
+                } else if(!tipoOpDir.equals(tipoOpEsq)){
                     throw new RuntimeException("Operadores " + tipoOpDir + " e " + tipoOpEsq + " são de tipos diferentes");
                 } else {
                     return operacoes(opDir, opEsq, operador, tipoOpDir);
@@ -214,7 +238,7 @@ public class Interpretador {
         }
     }
 
-    private boolean isNumber (String number) {
+    private boolean isInteger(String number) {
         try {
             int result = Integer.parseInt(number);
             return true;
@@ -223,9 +247,20 @@ public class Interpretador {
         }
     }
 
+    private boolean isDouble (String number) {
+        try {
+            double result = Double.parseDouble(number);
+            return true;
+        } catch (NumberFormatException e){
+            return false;
+        }
+    }
+
     private Object verificarTipo(String valor) {
-        if(isNumber(valor)) {
+        if(isInteger(valor)) {
             return Integer.parseInt(valor);
+        } else if (isDouble(valor)) {
+            return Double.parseDouble(valor);
         } else if (valor.equals("false")) {
             return false;
         } else if (valor.equals("true")) {
@@ -237,23 +272,11 @@ public class Interpretador {
 
     private Object operacoes (Object dir, Object esq, String op, String tipo){
         if (tipo.equals("Integer")) {
-            if (op.equals("+")) return (Integer)esq + (Integer)dir;
-            else if (op.equals("*")) return (Integer)esq * (Integer)dir;
-            else if (op.equals("-")) return (Integer)esq - (Integer)dir;
-            else if (op.equals("/")) return (Integer)esq / (Integer)dir;
-            else if (op.equals("<")) return (Integer)esq < (Integer)dir;
-            else if (op.equals(">")) return (Integer)esq < (Integer)dir;
-            else if (op.equals("<=")) return (Integer)esq <= (Integer)dir;
-            else if (op.equals(">=")) return (Integer)esq >= (Integer)dir;
-            else if (op.equals("==")) return (Integer)esq >= (Integer)dir;
-            else if (op.equals("!=")) return (Integer)esq >= (Integer)dir;
-            else throw new RuntimeException("Operador inválido para este tipo");
+            return entreInteiros(dir, esq, op);
         } else if(tipo.equals("Boolean")){
-            if (op.equals("==")) return (Boolean)esq == (Boolean) dir;
-            else if (op.equals("!=")) return (Boolean)esq != (Boolean)dir;
-            else if (op.equals("&&")) return (Boolean)esq && (Boolean)dir;
-            else if (op.equals("||")) return (Boolean)esq || (Boolean)dir;
-            else throw new RuntimeException("Operador inválido para este tipo");
+            return entreBooleanos(dir, esq, op);
+        } else if(tipo.equals("Double")){
+            return entreDoubles(dir, esq, op);
         } else {
             if (op.equals("+")) return (String)esq + (String)dir;
             else throw new RuntimeException("Operador inválido para este tipo");
@@ -266,6 +289,44 @@ public class Interpretador {
             numArgsPassados++;
         }
         return numArgs == numArgsPassados;
+    }
+
+    private Object entreInteiros (Object dir, Object esq, String op) {
+        if (op.equals("+")) return (Integer)esq + (Integer)dir;
+        else if (op.equals("*")) return (Integer)esq * (Integer)dir;
+        else if (op.equals("-")) return (Integer)esq - (Integer)dir;
+        else if (op.equals("/")) return (Integer)esq / (Integer)dir;
+        else if (op.equals("<")) return (Integer)esq < (Integer)dir;
+        else if (op.equals(">")) return (Integer)esq > (Integer)dir;
+        else if (op.equals("<=")) return (Integer)esq <= (Integer)dir;
+        else if (op.equals(">=")) return (Integer)esq >= (Integer)dir;
+        else if (op.equals("==")) return (Integer)esq == (Integer)dir;
+        else if (op.equals("!=")) return (Integer)esq != (Integer)dir;
+        else throw new RuntimeException("Operador inválido para este tipo");
+    }
+
+    private Object entreBooleanos (Object dir, Object esq, String op){
+        if (op.equals("==")) return (Boolean)esq == (Boolean) dir;
+        else if (op.equals("!=")) return (Boolean)esq != (Boolean)dir;
+        else if (op.equals("&&")) return (Boolean)esq && (Boolean)dir;
+        else if (op.equals("||")) return (Boolean)esq || (Boolean)dir;
+        else throw new RuntimeException("Operador inválido para este tipo");
+    }
+    private Object entreDoubles (Object dir, Object esq, String op){
+        if (op.equals("+")) return (Double)esq + (Double)dir;
+        else if (op.equals("*")) return (Double)esq * (Double) dir;
+        else if (op.equals("-")) return (Double)esq - (Double) dir;
+        else if (op.equals("/")) return (Double)esq / (Double) dir;
+        else if (op.equals("<")) return (Double)esq < (Double) dir;
+        else if (op.equals(">")) return (Double)esq > (Double) dir;
+        else if (op.equals("<=")) return (Double)esq <= (Double) dir;
+        else if (op.equals(">=")) return (Double)esq >= (Double) dir;
+        else if (op.equals("==")) return (Double)esq == (Double) dir;
+        else if (op.equals("!=")) return (Double)esq != (Double) dir;
+        else throw new RuntimeException("Operador inválido para este tipo");
+    }
+    private void entreIntegerEDouble (Object dir, Object esq, String op){
+
     }
 
 }
