@@ -280,10 +280,12 @@ public class Interpretador {
 
     private Object entreInteiros (Object esq, Object dir, String op) {
         return switch (op) {
-            case "+" -> (Integer) esq + (Integer) dir;
             case "*" -> (Integer) esq * (Integer) dir;
+            case "/" -> ((Integer)dir > (Integer)esq) ?
+                    Double.parseDouble(esq.toString()) / Double.parseDouble(dir.toString())
+                    : (Integer) esq / (Integer) dir;
+            case "+" -> (Integer) esq + (Integer) dir;
             case "-" -> (Integer) esq - (Integer) dir;
-            case "/" -> (Integer) esq / (Integer) dir;
             case "<" -> (Integer) esq < (Integer) dir;
             case ">" -> (Integer) esq > (Integer) dir;
             case "<=" -> (Integer) esq <= (Integer) dir;
@@ -305,10 +307,10 @@ public class Interpretador {
     }
     private Object entreDoubles (Object esq, Object dir, String op){
         return switch (op) {
-            case "+" -> (Double) esq + (Double) dir;
             case "*" -> (Double) esq * (Double) dir;
-            case "-" -> (Double) esq - (Double) dir;
             case "/" -> (Double) esq / (Double) dir;
+            case "+" -> (Double) esq + (Double) dir;
+            case "-" -> (Double) esq - (Double) dir;
             case "<" -> (Double) esq < (Double) dir;
             case ">" -> (Double) esq > (Double) dir;
             case "<=" -> (Double) esq <= (Double) dir;
@@ -320,10 +322,10 @@ public class Interpretador {
     }
     private Object entreDoubleEInteger (Object esq, Object dir, String op){
         return switch (op) {
-            case "+" -> (Double) esq + (Integer) dir;
             case "*" -> (Double) esq * (Integer) dir;
-            case "-" -> (Double) esq - (Integer) dir;
             case "/" -> (Double) esq / (Integer) dir;
+            case "+" -> (Double) esq + (Integer) dir;
+            case "-" -> (Double) esq - (Integer) dir;
             case "<" -> (Double) esq < (Integer) dir;
             case ">" -> (Double) esq > (Integer) dir;
             case "<=" -> (Double) esq <= (Integer) dir;
@@ -334,10 +336,10 @@ public class Interpretador {
 
     private Object entreIntegerEDouble (Object esq, Object dir, String op){
         return switch (op) {
-            case "+" -> (Integer) esq + (Double) dir;
             case "*" -> (Integer) esq * (Double) dir;
-            case "-" -> (Integer) esq - (Double) dir;
             case "/" -> (Integer) esq / (Double) dir;
+            case "+" -> (Integer) esq + (Double) dir;
+            case "-" -> (Integer) esq - (Double) dir;
             case "<" -> (Integer) esq < (Double) dir;
             case ">" -> (Integer) esq > (Double) dir;
             case "<=" -> (Integer) esq <= (Double) dir;

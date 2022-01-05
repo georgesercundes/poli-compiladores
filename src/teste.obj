@@ -6,7 +6,7 @@ obj pessoa1 = {
     sexo: "M",
     deficiente: false,
     calcularBonus (salario, porcentagem) {
-        return salario - ((salario * (100 - porcentagem))/100)
+        return salario * porcentagem/100
     }
 }
 
@@ -30,16 +30,21 @@ print(pessoa3)
 pessoa3.nome = "Luiz"
 pessoa2.profissao = "Desenvolvedora"
 pessoa1.salario = 3000
-pessoa1.salario = 2000
 print(pessoa1)
 print(pessoa2)
 print(pessoa3.nome)
 print(pessoa1.calcularBonus(3000, 10))
-pessoa2.executarLoop = function(inicio, limite) {
+pessoa2.executarLoop(0, 10)
+pessoa2.executarLoop = function(inicio, fim) {
     while(inicio < limite) {
         inicio = inicio + 2
     }
     return inicio + 3 * 5
 }
-
 print(pessoa2.executarLoop(0, 10))
+pessoa1.peso = 80
+pessoa1.altura = 1.78
+pessoa1.calcularIMC = function () {
+    return pessoa1.peso / (pessoa1.altura * pessoa1.altura)
+}
+print(pessoa1.calcularIMC())
