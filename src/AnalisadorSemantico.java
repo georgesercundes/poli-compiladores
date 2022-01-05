@@ -1,6 +1,4 @@
 import org.antlr.v4.runtime.tree.ParseTree;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
