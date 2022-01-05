@@ -5,5 +5,5 @@
 ## Sobre
 
 O objetivo do projeto foi criar uma gramática e um gerador de código que realizasse a criação e modificação de objetos de forma dinâmica, similar ao que é feito na linguagem de programação Javascript. 
-A gramática é de tipagem dinâmica e forte, semelhante à linguagem Python, e permite a criação de atributos e funções dentro do objeto e também a impressão destes em tela.  
+A gramática é de tipagem dinâmica e forte, semelhante à linguagem Python, e permite a criação e modificação de atributos e funções dentro do objeto e também a impressão destes em tela.  
  
