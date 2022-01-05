@@ -1,4 +1,4 @@
-// Generated from C:/Users/george.siqueira/IdeaProjects/Projeto_Compiladores/src\Obj.g4 by ANTLR 4.9.2
+// Generated from C:/Users/georg/IdeaProjects/Projeto_Compiladores/src\Obj.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -18,7 +18,7 @@ public class ObjParser extends Parser {
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, TRUE=17, 
-		FALSE=18, NUM=19, STRING=20, VAR=21, OP=22, SPACES=23;
+		FALSE=18, NUM=19, DOUBLE=20, STRING=21, VAR=22, OP=23, SPACES=24;
 	public static final int
 		RULE_start = 0, RULE_obj = 1, RULE_decVar = 2, RULE_print = 3, RULE_com = 4, 
 		RULE_atrib = 5, RULE_bloco = 6, RULE_seq = 7, RULE_expr = 8, RULE_funcao = 9, 
@@ -42,8 +42,8 @@ public class ObjParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, "TRUE", "FALSE", "NUM", "STRING", "VAR", 
-			"OP", "SPACES"
+			null, null, null, null, null, "TRUE", "FALSE", "NUM", "DOUBLE", "STRING", 
+			"VAR", "OP", "SPACES"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -1160,7 +1160,7 @@ public class ObjParser extends Parser {
 			setState(180);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__7) | (1L << TRUE) | (1L << FALSE) | (1L << NUM) | (1L << STRING) | (1L << VAR))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__7) | (1L << TRUE) | (1L << FALSE) | (1L << NUM) | (1L << DOUBLE) | (1L << STRING) | (1L << VAR))) != 0)) {
 				{
 				setState(172);
 				expr(0);
@@ -1203,6 +1203,7 @@ public class ObjParser extends Parser {
 		public TerminalNode TRUE() { return getToken(ObjParser.TRUE, 0); }
 		public TerminalNode NUM() { return getToken(ObjParser.NUM, 0); }
 		public TerminalNode STRING() { return getToken(ObjParser.STRING, 0); }
+		public TerminalNode DOUBLE() { return getToken(ObjParser.DOUBLE, 0); }
 		public ValorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1226,7 +1227,7 @@ public class ObjParser extends Parser {
 			{
 			setState(184);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TRUE) | (1L << FALSE) | (1L << NUM) | (1L << STRING))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TRUE) | (1L << FALSE) | (1L << NUM) | (1L << DOUBLE) | (1L << STRING))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -1263,7 +1264,7 @@ public class ObjParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\31\u00bd\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\32\u00bd\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\3\2\3\2\7\2\33\n\2\f\2\16\2\36\13\2\3\2\3\2\3\3\3\3\3\3"+
 		"\3\3\3\3\3\3\3\3\7\3)\n\3\f\3\16\3,\13\3\5\3.\n\3\3\3\3\3\3\3\3\3\3\3"+
@@ -1276,27 +1277,27 @@ public class ObjParser extends Parser {
 		"\t\u0094\13\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\5\n\u00a1\n"+
 		"\n\3\n\3\n\3\n\7\n\u00a6\n\n\f\n\16\n\u00a9\13\n\3\13\3\13\3\13\3\13\3"+
 		"\13\3\13\3\13\7\13\u00b2\n\13\f\13\16\13\u00b5\13\13\5\13\u00b7\n\13\3"+
-		"\13\3\13\3\f\3\f\3\f\2\3\22\r\2\4\6\b\n\f\16\20\22\24\26\2\3\3\2\23\26"+
+		"\13\3\13\3\f\3\f\3\f\2\3\22\r\2\4\6\b\n\f\16\20\22\24\26\2\3\3\2\23\27"+
 		"\2\u00cb\2\34\3\2\2\2\4K\3\2\2\2\6M\3\2\2\2\bR\3\2\2\2\np\3\2\2\2\f\u0086"+
 		"\3\2\2\2\16\u0088\3\2\2\2\20\u0092\3\2\2\2\22\u00a0\3\2\2\2\24\u00aa\3"+
 		"\2\2\2\26\u00ba\3\2\2\2\30\33\5\4\3\2\31\33\5\b\5\2\32\30\3\2\2\2\32\31"+
 		"\3\2\2\2\33\36\3\2\2\2\34\32\3\2\2\2\34\35\3\2\2\2\35\37\3\2\2\2\36\34"+
-		"\3\2\2\2\37 \7\2\2\3 \3\3\2\2\2!\"\7\3\2\2\"#\7\27\2\2#$\7\4\2\2$-\7\5"+
+		"\3\2\2\2\37 \7\2\2\3 \3\3\2\2\2!\"\7\3\2\2\"#\7\30\2\2#$\7\4\2\2$-\7\5"+
 		"\2\2%*\5\f\7\2&\'\7\6\2\2\')\5\f\7\2(&\3\2\2\2),\3\2\2\2*(\3\2\2\2*+\3"+
 		"\2\2\2+.\3\2\2\2,*\3\2\2\2-%\3\2\2\2-.\3\2\2\2./\3\2\2\2/L\7\7\2\2\60"+
-		"\61\7\27\2\2\61\62\7\b\2\2\62\63\7\27\2\2\63\64\7\4\2\2\64L\5\26\f\2\65"+
-		"\66\7\27\2\2\66\67\7\b\2\2\678\7\27\2\289\7\4\2\29:\7\t\2\2:C\7\n\2\2"+
-		";@\7\27\2\2<=\7\6\2\2=?\7\27\2\2><\3\2\2\2?B\3\2\2\2@>\3\2\2\2@A\3\2\2"+
+		"\61\7\30\2\2\61\62\7\b\2\2\62\63\7\30\2\2\63\64\7\4\2\2\64L\5\26\f\2\65"+
+		"\66\7\30\2\2\66\67\7\b\2\2\678\7\30\2\289\7\4\2\29:\7\t\2\2:C\7\n\2\2"+
+		";@\7\30\2\2<=\7\6\2\2=?\7\30\2\2><\3\2\2\2?B\3\2\2\2@>\3\2\2\2@A\3\2\2"+
 		"\2AD\3\2\2\2B@\3\2\2\2C;\3\2\2\2CD\3\2\2\2DE\3\2\2\2EF\7\13\2\2FG\7\5"+
 		"\2\2GH\5\16\b\2HI\7\7\2\2IL\3\2\2\2JL\5\24\13\2K!\3\2\2\2K\60\3\2\2\2"+
-		"K\65\3\2\2\2KJ\3\2\2\2L\5\3\2\2\2MN\7\f\2\2NO\7\27\2\2OP\7\4\2\2PQ\5\22"+
+		"K\65\3\2\2\2KJ\3\2\2\2L\5\3\2\2\2MN\7\f\2\2NO\7\30\2\2OP\7\4\2\2PQ\5\22"+
 		"\n\2Q\7\3\2\2\2RS\7\r\2\2ST\7\n\2\2TU\5\22\n\2UV\7\13\2\2V\t\3\2\2\2W"+
-		"X\7\27\2\2XY\7\4\2\2Yq\5\22\n\2Z[\7\16\2\2[\\\7\n\2\2\\]\5\22\n\2]^\7"+
+		"X\7\30\2\2XY\7\4\2\2Yq\5\22\n\2Z[\7\16\2\2[\\\7\n\2\2\\]\5\22\n\2]^\7"+
 		"\13\2\2^_\7\5\2\2_`\5\20\t\2`a\7\7\2\2aq\3\2\2\2bc\7\17\2\2cd\7\n\2\2"+
 		"de\5\22\n\2ef\7\13\2\2fg\7\5\2\2gh\5\20\t\2hn\7\7\2\2ij\7\20\2\2jk\7\5"+
 		"\2\2kl\5\20\t\2lm\7\7\2\2mo\3\2\2\2ni\3\2\2\2no\3\2\2\2oq\3\2\2\2pW\3"+
-		"\2\2\2pZ\3\2\2\2pb\3\2\2\2q\13\3\2\2\2rs\7\27\2\2st\7\21\2\2t\u0087\5"+
-		"\26\f\2uv\7\27\2\2v\177\7\n\2\2w|\7\27\2\2xy\7\6\2\2y{\7\27\2\2zx\3\2"+
+		"\2\2\2pZ\3\2\2\2pb\3\2\2\2q\13\3\2\2\2rs\7\30\2\2st\7\21\2\2t\u0087\5"+
+		"\26\f\2uv\7\30\2\2v\177\7\n\2\2w|\7\30\2\2xy\7\6\2\2y{\7\30\2\2zx\3\2"+
 		"\2\2{~\3\2\2\2|z\3\2\2\2|}\3\2\2\2}\u0080\3\2\2\2~|\3\2\2\2\177w\3\2\2"+
 		"\2\177\u0080\3\2\2\2\u0080\u0081\3\2\2\2\u0081\u0082\7\13\2\2\u0082\u0083"+
 		"\7\5\2\2\u0083\u0084\5\16\b\2\u0084\u0085\7\7\2\2\u0085\u0087\3\2\2\2"+
@@ -1306,14 +1307,14 @@ public class ObjParser extends Parser {
 		"\u0091\5\b\5\2\u0090\u008d\3\2\2\2\u0090\u008e\3\2\2\2\u0090\u008f\3\2"+
 		"\2\2\u0091\u0094\3\2\2\2\u0092\u0090\3\2\2\2\u0092\u0093\3\2\2\2\u0093"+
 		"\21\3\2\2\2\u0094\u0092\3\2\2\2\u0095\u0096\b\n\1\2\u0096\u00a1\5\26\f"+
-		"\2\u0097\u00a1\7\27\2\2\u0098\u0099\7\n\2\2\u0099\u009a\5\22\n\2\u009a"+
-		"\u009b\7\13\2\2\u009b\u00a1\3\2\2\2\u009c\u009d\7\27\2\2\u009d\u009e\7"+
-		"\b\2\2\u009e\u00a1\7\27\2\2\u009f\u00a1\5\24\13\2\u00a0\u0095\3\2\2\2"+
+		"\2\u0097\u00a1\7\30\2\2\u0098\u0099\7\n\2\2\u0099\u009a\5\22\n\2\u009a"+
+		"\u009b\7\13\2\2\u009b\u00a1\3\2\2\2\u009c\u009d\7\30\2\2\u009d\u009e\7"+
+		"\b\2\2\u009e\u00a1\7\30\2\2\u009f\u00a1\5\24\13\2\u00a0\u0095\3\2\2\2"+
 		"\u00a0\u0097\3\2\2\2\u00a0\u0098\3\2\2\2\u00a0\u009c\3\2\2\2\u00a0\u009f"+
-		"\3\2\2\2\u00a1\u00a7\3\2\2\2\u00a2\u00a3\f\6\2\2\u00a3\u00a4\7\30\2\2"+
+		"\3\2\2\2\u00a1\u00a7\3\2\2\2\u00a2\u00a3\f\6\2\2\u00a3\u00a4\7\31\2\2"+
 		"\u00a4\u00a6\5\22\n\7\u00a5\u00a2\3\2\2\2\u00a6\u00a9\3\2\2\2\u00a7\u00a5"+
 		"\3\2\2\2\u00a7\u00a8\3\2\2\2\u00a8\23\3\2\2\2\u00a9\u00a7\3\2\2\2\u00aa"+
-		"\u00ab\7\27\2\2\u00ab\u00ac\7\b\2\2\u00ac\u00ad\7\27\2\2\u00ad\u00b6\7"+
+		"\u00ab\7\30\2\2\u00ab\u00ac\7\b\2\2\u00ac\u00ad\7\30\2\2\u00ad\u00b6\7"+
 		"\n\2\2\u00ae\u00b3\5\22\n\2\u00af\u00b0\7\6\2\2\u00b0\u00b2\5\22\n\2\u00b1"+
 		"\u00af\3\2\2\2\u00b2\u00b5\3\2\2\2\u00b3\u00b1\3\2\2\2\u00b3\u00b4\3\2"+
 		"\2\2\u00b4\u00b7\3\2\2\2\u00b5\u00b3\3\2\2\2\u00b6\u00ae\3\2\2\2\u00b6"+

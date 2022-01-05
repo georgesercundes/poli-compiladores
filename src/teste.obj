@@ -34,17 +34,11 @@ print(pessoa1)
 print(pessoa2)
 print(pessoa3.nome)
 print(pessoa1.calcularBonus(3000, 10))
-pessoa2.executarLoop(0, 10)
 pessoa2.executarLoop = function(inicio, fim) {
     while(inicio < limite) {
         inicio = inicio + 2
     }
     return inicio + 3 * 5
 }
-print(pessoa2.executarLoop(0, 10))
-pessoa1.peso = 80
-pessoa1.altura = 178
-pessoa1.calcularIMC = function () {
-    return (pessoa1.peso * 10000) / (pessoa1.altura * pessoa1.altura)
-}
-print(pessoa1.calcularIMC())
+
+print(pessoa2.executarLoop(3, "oi"))

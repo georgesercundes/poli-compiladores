@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Executando o intepretador");
-        CharStream src = CharStreams.fromFileName("src/teste.expr");
+        CharStream src = CharStreams.fromFileName("src/teste.obj");
         ObjLexer lexer = new ObjLexer(src);
         TokenStream tokens = new CommonTokenStream(lexer);
         ObjParser parser = new ObjParser(tokens);
@@ -19,8 +19,14 @@ public class Main {
             System.out.println("Entrada errada");
         } else {
             System.out.println("Entrada Válida");
-            Interpretador interpretador = new Interpretador();
-            interpretador.interpretar(tree);
+            AnalisadorSemantico analisador = new AnalisadorSemantico();
+            if(analisador.analise(tree)) {
+                Interpretador interpretador = new Interpretador();
+                interpretador.interpretar(tree);
+            } else {
+                System.out.println("Erros de semântica detectados");
+            }
         }
+
     }
 }
