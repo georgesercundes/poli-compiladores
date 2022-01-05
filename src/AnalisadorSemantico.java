@@ -27,7 +27,11 @@ public class AnalisadorSemantico {
             case "Variavel" -> {
                 String nomeVar = t.getChild(0).getText();
                 if (variaveis.containsKey(nomeVar)) {
-                    return "var";
+                    if(variaveis.get(nomeVar) == null){
+                        return "var";
+                    } else {
+                        return variaveis.get(nomeVar);
+                    }
                 } else if(objetos.containsKey(nomeVar)){
                     return "object";
                 } else {
@@ -54,7 +58,7 @@ public class AnalisadorSemantico {
                 } else if(tipoOpEsq.equals("var") || tipoOpDir.equals("var")){
                     return "var";
                 } else {
-                    System.out.println("Tipos " + tipoOpEsq + " " + tipoOpDir + " são incompatíveis");
+                    System.err.println("Tipos " + tipoOpEsq + " e " + tipoOpDir + " são incompatíveis");
                     return "erro";
                 }
             }

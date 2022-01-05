@@ -30,15 +30,16 @@ print(pessoa3)
 pessoa3.nome = "Luiz"
 pessoa2.profissao = "Desenvolvedora"
 pessoa1.salario = 3000
+pessoa1.salario = 2000
 print(pessoa1)
 print(pessoa2)
 print(pessoa3.nome)
 print(pessoa1.calcularBonus(3000, 10))
-pessoa2.executarLoop = function(inicio, fim) {
+pessoa2.executarLoop = function(inicio, limite) {
     while(inicio < limite) {
         inicio = inicio + 2
     }
     return inicio + 3 * 5
 }
 
-print(pessoa2.executarLoop(3, "oi"))
+print(pessoa2.executarLoop(0, 10))
