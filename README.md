@@ -22,9 +22,22 @@ Como as variáveis em JavaScript, o nome do objeto (que poderia ser uma variáve
 <span class="kt">meuCarro.modelo</span> <span class="n">variavel</span> <span class="o">=</span> <span class="mi">"Mustang"</span>
 <span class="kt">meuCarro.ano</span> <span class="n">variavel</span> <span class="o">=</span> <span class="mi">1969</span></code></pre></div>
 
+<h3>Criando novos objetos</h3>
+
+Você pode criar objetos usando um inicializador de objeto. O uso de inicializadores de objeto é às vezes conhecido como criar objetos com notação literal. 
+
+A sintaxe para um objeto usando-se um inicializador de objeto é:
+
+<div class="highlight"><pre class="highlight c"><code><span class="kt">var</span> <span class="n">obj</span> <span class="o">=</span> <span class="mi">{</span>
+<span class="kt">   propriedade_1:</span> <span class="n">valor_1,</span> 
+<span class="mi">   2:</span> <span class="mi">valor_1,</span>
+<span class="mi">   // ...,</span>
+<span class="mi">   "propriedade n":</span> <span class="mi">valor_n</span>
+<span class="mi">}</span></code></pre></div>
+
 <h3>Definindo métodos</h3>
 
-Um método é uma função associada a um objeto, ou, simplesmente, um método é uma propriedade de um objeto que é uma função. Métodos são definidos da forma que as funções normais são definidas, exceto que eles tenham que ser atribuídos como propriedade de um objeto. São exemplos:
+Um método é uma função associada a um objeto, ou, simplesmente, um método é uma propriedade de um objeto que é uma função. São exemplos:
 
 <div class="highlight"><pre class="highlight c"><code><span class="kt">var</span> <span class="n">meuObjeto</span> <span class="o">=</span> <span class="mi">{ </span>
 <span class="kt">   meuMetodo(parametros):</span> <span class="n">{</span> 
@@ -137,4 +150,3 @@ Basicamente, o objetivo de um sistema de tipos é reduzir erros em programas de 
 Por outro lado, linguagens dinamicamente tipadas costumam ser mais ágeis durante o desenvolvimento e também são mais flexíveis.
 
 Desse modo, a utilização de uma liguagem com uma certa tipagem depende muito do projeto ao qual se está desenvolvendo o software em questão</p>
- 
