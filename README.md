@@ -2,15 +2,6 @@
 
 <h2>Projeto de compilador, utilizando a ferramenta ANTLR, realizado na Disciplina de Compiladores</h2>
 
-<h2>Grupo:</h2>
-
-<ul> 
-  <li>George Siqueira Sercundes</li>
-  <li>Adauto de Holanda Barbosa</li>
-  <li>Luiz Carlos de França</li>
-  <li>Luiz Carlos Oliveira Neves</li>
-</ul>
-
 <h2>Sobre</h2>
 
 <p>O objetivo do projeto foi, atráves do uso da ferramenta ANTLR, criar um compilador que realizasse a criação e modificação de objetos de forma dinâmica, similar ao que é feito na linguagem de programação Javascript. 
